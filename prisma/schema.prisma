@@ -1,0 +1,30 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  binaryTargets = ["native"]
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Entidade(Criando tabela no banco de dados chamada feedback )
+
+model Feedback {
+  // PK
+  // id Int @id @default(autoincrement())
+
+  // UUID -> Universal Unique ID
+
+  id String @id @default(uuid())
+
+  type       String
+  comment    String
+  screenshot String?
+
+  // Nome da tabela
+  @@map("feebacks")
+}
